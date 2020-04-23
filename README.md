@@ -12,10 +12,9 @@ Chef is a software development kit delivering a set of tools for developing and 
 
 ### Pre Requisites
 
-- NodeJS Cookbook
-- Chef license - accept
-- npm
+- ChefDK
 - git
+- AWS credentials (for ec2 driver)
 
 ### Cookbook
 
@@ -29,22 +28,17 @@ NodeJS
 pm2
 ```
 
-#### To run test
+#### Unit test
 
 to run unit tests
+
 ```
 chef exec rspec
 ```
 
-To run integration test
+Unit test is a level of testing of each individual components of the software.
 
-```
-kitchen test
-```
-
-To use to test on aws ec2 driver use kitchen_cloud.yml then kitchen test
-
-#### Unit test
+These are what the unit tests look for
 
 ```
 should install nginx
@@ -57,8 +51,16 @@ should install pm2 via npm
 ```
 
 #### Integration Test
+
+To run integration test
+
+```
+kitchen test
 ```
 
+Integration test is the level of testing where certain components are combined with others and tested together and these are some of the intgration test for this cookbook
+
+```
 describe package ('nginx') do
   it { should be_installed }
 end
@@ -85,3 +87,5 @@ describe npm ("pm2") do
   it { should be_installed }
 end
 ```
+
+To use to test on aws ec2 driver use kitchen_cloud.yml then kitchen test
